@@ -44,7 +44,7 @@ def softsvm(traindata, trainlabel, testdata, testlabel, sigma, C):
     if sigma == 0:
         clf = svm.SVC(kernel='linear', C=C)
     else:
-        clf = svm.SVC(kernel='rbf')
+        clf = svm.SVC(kernel='rbf', gamma=1.0 / sigma**2, C=C)
     clf.fit(traindata, trainlabel)
     y_pred = clf.predict(testdata)
 
